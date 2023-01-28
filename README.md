@@ -1,5 +1,3 @@
 # Twitch Chat Bot in Node.js with TMI.js
 
-[ ] everything is done ?
-
-🫠
+⬜️ : everything is done ? 🫠
