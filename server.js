@@ -1,10 +1,7 @@
 import 'dotenv/config';
 import tmi from 'tmi.js';
 
-import sayHello from './modules/sayHello/sayHello.js';
-
-import { isFirstMessage } from './utils/index.js';
-import { commands } from './utils/commands.js';
+import { sayHello, ia } from './modules/index.js';
 
 const client = new tmi.Client({
   options: { debug: true },
@@ -23,9 +20,8 @@ client.connect();
 client.on('message', (channel, tags, message, self) => {
   if (self) return;
 
-  if (isFirstMessage(tags)) {
-    sayHello(channel, tags);
-  }
+  sayHello(client, channel, tags);
+  ia(client, channel, tags, message);
 
   const args = message.slice(1).split(' ');
   const command = args.shift().toLowerCase();
